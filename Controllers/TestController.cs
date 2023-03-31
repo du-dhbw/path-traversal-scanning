@@ -9,6 +9,7 @@ public class VulnerableController : ControllerBase
 	[HttpGet]
 	public IActionResult Get(string fileName)
 	{
+		// path traversal vulnerability
 		return PhysicalFile(fileName, "text/plain");
 	}
 }
