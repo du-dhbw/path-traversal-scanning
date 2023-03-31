@@ -7,9 +7,9 @@ namespace path_traversal.Controllers;
 public class VulnerableController : ControllerBase
 {
 	[HttpGet]
-	public IActionResult Get(string fileName)
+	public IActionResult Get([FromQuery] string fileName)
 	{
-		// path traversal vulnerability
-		return PhysicalFile(fileName, "text/plain");
+		var text = System.IO.File.ReadAllText(fileName);
+		return Ok(text);
 	}
 }
